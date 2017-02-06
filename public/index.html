@@ -58,8 +58,28 @@
 
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBBj6nL4bI6HRCRUUxWiVnnE1RxTvvZSWQ",
+          authDomain: "firstfirebase-7edfd.firebaseapp.com",
+          databaseURL: "https://firstfirebase-7edfd.firebaseio.com",
+          storageBucket: "firstfirebase-7edfd.appspot.com",
+          messagingSenderId: "184350321647"
+        };
+        firebase.initializeApp(config);
+        var auth = firebase.auth();
+        var authProvider = new firebase.auth.GoogleAuthProvider();
+        auth.onAuthStateChanged(function(user) {
+          if (user) {
+            console.log(user);
+          } else {
+            auth.signInWithPopup(authProvider);
+          }
 
+        })
+      </script>
     </body>
   </html>
